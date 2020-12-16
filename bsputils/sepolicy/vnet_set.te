@@ -1,0 +1,20 @@
+########################################
+# sepolicy rules for vnet_set
+########################################
+type vnet_set, domain;
+type vnet_set_exec, exec_type, vendor_file_type, file_type;
+
+# permissive vnet_set;
+init_daemon_domain(vnet_set)
+
+allow vnet_set vnet_set:file { read write open ioctl };
+allow vnet_set vendor_shell_exec:file rx_file_perms;
+
+allow vnet_set sysfs:file {open read write};
+
+allow vnet_set shell_exec:file {map read getattr};
+allow vnet_set vnet_set:udp_socket { ioctl };
+
+domain_auto_trans(vnet_set, netutils_wrapper_exec, netutils_wrapper);
+allow netutils_wrapper vnet_set:fd use;
+

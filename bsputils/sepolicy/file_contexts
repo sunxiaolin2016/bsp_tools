@@ -1,0 +1,2 @@
+# hsae vnet set
+/vendor/bin/vnet_set            u:object_r:vnet_set_exec:s0

@@ -1,0 +1,2 @@
+genfscon proc /tcs_mcu/mcu u:object_r:proc_tcs_mcu:s0
+
